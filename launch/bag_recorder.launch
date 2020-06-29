@@ -1,0 +1,8 @@
+<launch>	
+  <!-- Launch Bag Recorder -->
+  <node pkg="bag_recorder" type="bag_recorder.py" name="human_bag_recorder" output="screen"> </node>
+</launch>
+
+
+
+    
