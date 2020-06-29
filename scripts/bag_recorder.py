@@ -29,7 +29,6 @@ def recordBag(req):
             topicList += "/" + topic + " "
         
         command = "roslaunch bag_recorder node.launch node_prefix:=" + recorder_name + " directory:=" + directory + " topics:='" + topicList + "'"
-        print (command)
         rosbag_proc = subprocess.Popen(command, stdin=subprocess.PIPE, shell=True)
         msg = "Started recording"
     else:
@@ -40,17 +39,17 @@ def recordBag(req):
     return SetBoolResponse(True, msg)
 
 def bag_recorder():
-    rospy.init_node('bag_recorder', anonymous=True)
+    rospy.init_node('bag_recorder')
     node_name = rospy.get_name()
 
     # Get Parameters
     global recorder_name, topics, directory
-    recorder_name = rospy.get_param(rospy.get_name()+ '/recorder_name')
+    recorder_name = rospy.get_param(node_name + '/recorder_name')
     topics = rospy.get_param(rospy.get_name()+ '/topics', '-a')
     directory = rospy.get_param(rospy.get_name()+ '/directory', '/home/sutd/Bag')
 
-    s = rospy.Service('/record_bag', SetBool, recordBag) #node_name + '/record_bag'
-    print recorder_name, " : Bag Recorder Ready!"
+    s = rospy.Service(node_name + '/record_bag', SetBool, recordBag) 
+    print (recorder_name + " : Bag Recorder Ready!")
     rospy.spin()
 
 if __name__ == '__main__':
