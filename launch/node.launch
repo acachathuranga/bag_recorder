@@ -1,0 +1,12 @@
+<launch>	
+  <arg name="node_prefix" /> 
+  <arg name="directory" />
+  <arg name="topics" /> 
+
+  <!-- Launch ROS Bag node -->
+  <node pkg="rosbag" type="record" name="$(arg node_prefix)_rosbag" args="record -o $(arg directory)/$(arg node_prefix) $(arg topics)" output="screen"> </node>
+</launch>
+
+
+
+    

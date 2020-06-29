@@ -1,6 +1,8 @@
 <launch>	
   <!-- Launch Bag Recorder -->
-  <node pkg="bag_recorder" type="bag_recorder.py" name="human_bag_recorder" output="screen"> </node>
+  <node pkg="bag_recorder" type="bag_recorder.py" name="human_bag_recorder" output="screen"> 
+    <rosparam command="load" file="$(find bag_recorder)/config/parameters.yaml" />
+  </node>
 </launch>
 
 

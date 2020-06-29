@@ -1,0 +1,8 @@
+# Recorder Name Prefix
+recorder_name: human
+
+# Recorder Topics
+topics: ['UUB1', 'UUB2', 'UUB3', 'footIMU/IMU', 'waistIMU/IMU', 'imu_odometry']
+
+# Recorder Directory
+directory: "/home/sutd/Bag2"
